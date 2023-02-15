@@ -1,0 +1,14 @@
+head_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - H_joint1
+     - H_joint2
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      H_joint1: {trajectory: 0.1, goal: 0.1}
+      H_joint2: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+

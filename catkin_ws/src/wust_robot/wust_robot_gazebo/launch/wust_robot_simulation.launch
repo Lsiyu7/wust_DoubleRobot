@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <!--set to the required robot and world-->
+  <arg name="robotname" value="wust_robot"/>
+  <arg name="robotworld" value="neobotix_env2.world"/>
+  
+  <!--To launch RVIZ set the value to true-->
+  <arg name="rviz" value="true"/>
+
+  <!--To launch scanunifier set the value to true-->
+ 
+  <!--To move robot using teleop_keyboard-->
+  <!-- arg name="teleop_keyboard" value="true"/ -->
+   
+  <!--To move robot using joystick-->
+  
+ 
+  <!--__For the Navigation Package__-->
+  
+  <!--To launch gmapping to create a map-->
+  <!--Before changing the value to true both arg 'amcl' and 'move_base' must be set to false-->
+ 
+
+  <!--To launch amcl--> 
+
+
+  <!--To launch move base-->
+  
+
+  <!--To set the local planner-->
+  <arg name="localplanner" value="teb"/> 
+
+<!---=================================================================================================================================================================-->
+
+  <!--Gazebo Variables -->
+  <arg name="world" default="empty"/> 
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+   
+    <arg name="world_name" value="$(find wust_description)/worlds/$(arg robotworld)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>  
+<!---=================================================================================================================================================================-->
+
+  <!--Robot description to param server-->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find wust_description)/urdf/$(arg robotname).urdf'"/>
+
+  <node name="$(arg robotname)_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+  args="-urdf -param robot_description -model $(arg robotname) " />
+
+  <!-- For mmo_500 -->
+  
+  
+  <!--To publish Joint and Robot state-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+	<param name="rate" value="20.0"/>
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+	<param name="publish_frequency" value="20.0"/>
+  </node>
+
+<!---=================================================================================================================================================================-->
+
+ <!--if arg rviz is set to true-->
+
+ <group if="$(arg rviz)">
+ <param name="robot_description" command="$(find xacro)/xacro.py '$(find wust_description)/urdf/$(arg robotname).urdf' name:=$(arg robotname)"/> 
+ <arg name="rvizconfig" default="$(find wust_description)/config/default.rviz" />
+ <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true"/>
+ </group>
+ 
+  <!--if arg scan-unifier is set to true-->
+
+
+<!---=================================================================================================================================================================-->
+ 
+ <!--Neo control Package  **To use teleop-keyboard and joystick, neo_control package must be cloned to the workspace**--> 
+ 
+ <!--if arg teleop-keyboard is set to true-->
+
+ <!--group if="$(arg teleop_keyboard)">
+   <node pkg="turtlesim" type="turtle_teleop_key" name="turtlebot_teleop_keyboard"  output="screen">
+    <param name="scale_linear" value="0.5" type="double"/>
+    <param name="scale_angular" value="1.5" type="double"/>
+    <remap from="turtlebot_teleop_keyboard/cmd_vel" to="cmd_vel"/>
+  </node>
+ </group -->
+
+ <!--if arg joystick is set to true (default=false)-->
+
+
+<!---=================================================================================================================================================================-->
+
+ <!--Naviagation Package-->
+
+ <!--if arg gmapping is set to true (default=false)-->
+
+
+ <!--if arg amcl is set to true (default=false)-->
+
+ 
+
+ <!--if arg move_base is set to true-->
+
+ 
+
+</launch>

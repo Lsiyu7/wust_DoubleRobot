@@ -1,0 +1,33 @@
+
+(cl:in-package :asdf)
+
+(defsystem "mr_msgs-msg"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils :geometry_msgs-msg
+               :std_msgs-msg
+)
+  :components ((:file "_package")
+    (:file "AssemblyState" :depends-on ("_package_AssemblyState"))
+    (:file "_package_AssemblyState" :depends-on ("_package"))
+    (:file "AssemblyStates" :depends-on ("_package_AssemblyStates"))
+    (:file "_package_AssemblyStates" :depends-on ("_package"))
+    (:file "CollisionAvoidanceState" :depends-on ("_package_CollisionAvoidanceState"))
+    (:file "_package_CollisionAvoidanceState" :depends-on ("_package"))
+    (:file "CollisionDetectionState" :depends-on ("_package_CollisionDetectionState"))
+    (:file "_package_CollisionDetectionState" :depends-on ("_package"))
+    (:file "EndEffectorCommand" :depends-on ("_package_EndEffectorCommand"))
+    (:file "_package_EndEffectorCommand" :depends-on ("_package"))
+    (:file "EndEffectorProperties" :depends-on ("_package_EndEffectorProperties"))
+    (:file "_package_EndEffectorProperties" :depends-on ("_package"))
+    (:file "EndEffectorState" :depends-on ("_package_EndEffectorState"))
+    (:file "_package_EndEffectorState" :depends-on ("_package"))
+    (:file "EndpointState" :depends-on ("_package_EndpointState"))
+    (:file "_package_EndpointState" :depends-on ("_package"))
+    (:file "EndpointStates" :depends-on ("_package_EndpointStates"))
+    (:file "_package_EndpointStates" :depends-on ("_package"))
+    (:file "GripperCommand" :depends-on ("_package_GripperCommand"))
+    (:file "_package_GripperCommand" :depends-on ("_package"))
+    (:file "GripperState" :depends-on ("_package_GripperState"))
+    (:file "_package_GripperState" :depends-on ("_package"))
+    (:file "JointCommand" :depends-on ("_package_JointCommand"))
+    (:file "_package_JointCommand" :depends-on ("_package"))
+  ))

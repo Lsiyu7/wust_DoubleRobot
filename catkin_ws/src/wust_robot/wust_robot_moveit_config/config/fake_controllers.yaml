@@ -1,0 +1,75 @@
+controller_list:
+  - name: fake_left_arm_controller
+    joints:
+      - L_joint1
+      - L_joint2
+      - L_joint3
+      - L_joint4
+      - L_joint5
+      - L_joint6
+      - L_joint7
+  - name: fake_right_arm_controller
+    joints:
+      - R_joint1
+      - R_joint2
+      - R_joint3
+      - R_joint4
+      - R_joint5
+      - R_joint6
+      - R_joint7
+  - name: fake_head_controller
+    joints:
+      - H_joint1
+      - H_joint2
+  - name: fake_left_gripper_controller
+    joints:
+      - L_left_joint
+      - L_right_joint
+  - name: fake_right_gripper_controller
+    joints:
+      - R_left_joint
+      - R_right_joint
+  - name: fake_dual_arm_controller
+    joints:
+      - L_joint1
+      - L_joint2
+      - L_joint3
+      - L_joint4
+      - L_joint5
+      - L_joint6
+      - L_joint7
+      - R_joint1
+      - R_joint2
+      - R_joint3
+      - R_joint4
+      - R_joint5
+      - R_joint6
+      - R_joint7
+  - name: fake_dual_gripper_controller
+    joints:
+      - L_left_joint
+      - L_right_joint
+      - R_left_joint
+      - R_right_joint
+  - name: fake_all_controller
+    joints:
+      - H_joint1
+      - H_joint2
+      - L_joint1
+      - L_joint2
+      - L_joint3
+      - L_joint4
+      - L_joint5
+      - L_joint6
+      - L_joint7
+      - L_left_joint
+      - L_right_joint
+      - R_joint1
+      - R_joint2
+      - R_joint3
+      - R_joint4
+      - R_joint5
+      - R_joint6
+      - R_joint7
+      - R_left_joint
+      - R_right_joint

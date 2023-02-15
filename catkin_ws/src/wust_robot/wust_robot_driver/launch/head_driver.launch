@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+  Usage:
+    roslaunch mrp2a_driver.launch robot_ip:=<value>
+-->
+<launch>
+  <!-- The max_velocity parameter is only used for debugging in the aubo_driver. It's not related to actual velocity limits -->
+  <arg name="max_velocity" default="3.0"/> <!-- [rad/s] -->
+  <arg name="prefix" default="" />
+  <rosparam file="$(find wust_robot_driver)/config/head_controllers.yaml" command="load"/>
+
+  <!-- driver -->
+  <group ns="wust_robot">
+    <node name="wust_robot_head_driver" pkg="wust_robot_driver" type="wust_robot_head_driver" output="screen">
+      <param name="prefix" type="str" value="$(arg prefix)" />
+      <param name="max_velocity" type="double" value="$(arg max_velocity)" />
+    </node>
+  </group>
+</launch>

@@ -1,0 +1,2294 @@
+<robot name="wust_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/wust_robot</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+  <!-- vision -->
+ <link 
+    name="base_dummy">
+  </link>
+  <joint
+    name="dummy_fixed"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_dummy" />
+    <child
+      link="base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.282456057125086 -0.00267891878159933 0.622280941993128"
+        rpy="0 0 0" />
+      <mass
+        value="14.4253188556047" />
+      <inertia
+        ixx="3.4562626189094"
+        ixy="0.000474831227952002"
+        ixz="-0.0182515118714143"
+        iyy="3.45013717269394"
+        iyz="0.0116686710973834"
+        izz="0.488384434703737" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link 
+    name="L_shoulder_Link">
+  </link>
+  <joint
+    name="L_shoulder_joint"
+    type="fixed">
+    <origin
+      xyz="-0.195 0.219 1.152"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="L_shoulder_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link 
+    name="R_shoulder_Link">
+  </link>
+  <joint
+    name="R_shoulder_joint"
+    type="fixed">
+    <origin
+      xyz="-0.195 -0.227 1.158"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="R_shoulder_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="wheel_Link1">
+    <inertial>
+      <origin
+        xyz="3.98208446772408E-09 -1.06505154695569E-09 -0.00320196573480336"
+        rpy="0 0 0" />
+      <mass
+        value="0.784918417319531" />
+      <inertia
+        ixx="0.00103508205491259"
+        ixy="-1.20506527899157E-09"
+        ixz="-1.40770135890859E-11"
+        iyy="0.00103511219307498"
+        iyz="-1.29208313491843E-12"
+        izz="0.00137479471522695" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/wheel_Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/wheel_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_joint1"
+    type="continuous">
+    <origin
+      xyz="-0.103621086217595 0.316965297785102 0.0402"
+      rpy="1.5707963267949 0 2.61799387799148" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_Link1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_Link2">
+    <inertial>
+      <origin
+        xyz="1.02918445724924E-12 -1.06505145675007E-09 -0.00320198442894559"
+        rpy="0 0 0" />
+      <mass
+        value="0.784918417681748" />
+      <inertia
+        ixx="0.00103508209438553"
+        ixy="-2.85682060113823E-09"
+        ixz="1.1811141455231E-13"
+        iyy="0.00103511223630421"
+        iyz="-6.67148519845314E-12"
+        izz="0.00137479472059587" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/wheel_Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/wheel_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_joint2"
+    type="continuous">
+    <origin
+      xyz="-0.6526210862176 0 0.0402"
+      rpy="1.5707963267949 7.49830360911069E-33 -1.57079632679489" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_Link2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_Link3">
+    <inertial>
+      <origin
+        xyz="-2.83100107245637E-09 -1.06505148450564E-09 -0.0032019617538914"
+        rpy="0 0 0" />
+      <mass
+        value="0.784918417240751" />
+      <inertia
+        ixx="0.00103508206033524"
+        ixy="-8.54796798950166E-10"
+        ixz="9.34219235716564E-12"
+        iyy="0.00103511220112508"
+        iyz="-1.46548094469136E-13"
+        izz="0.00137479471751099" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/wheel_Link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/wheel_Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_joint3"
+    type="continuous">
+    <origin
+      xyz="-0.103621086217593 -0.316965297785103 0.0402"
+      rpy="1.5707963267949 0 0.523598775598322" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_Link3" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="L_Link0">
+    <inertial>
+      <origin
+        xyz="0.705266187723226 -0.0627195193252027 -0.0503860551663762"
+        rpy="0 0 0" />
+      <mass
+        value="44.8536262663904" />
+      <inertia
+        ixx="3.32145714603812"
+        ixy="-0.742413466725483"
+        ixz="0.341583244971493"
+        iyy="11.1763395351522"
+        iyz="-0.35531832839436"
+        izz="10.7760237557026" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.277216673276884 0.076446811665885 1.15429750765682"
+      rpy="3.14159265358934 1.56054089882637 -2.09612569168172" />
+    <parent
+      link="base_link" />
+    <child
+      link="L_Link0" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="L_Link1">
+    <inertial>
+      <origin
+        xyz="-4.01597777859308E-05 -0.015653004325108 0.0601130386374143"
+        rpy="0 0 0" />
+      <mass
+        value="0.225999459202375" />
+      <inertia
+        ixx="0.000855101108306438"
+        ixy="1.28543240450215E-07"
+        ixz="6.24868513140796E-07"
+        iyy="0.000896245950407909"
+        iyz="6.58582596095603E-05"
+        izz="0.000416139417054559" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0575"
+      rpy="-3.6214E-14 -1.1852E-14 -8.874E-06" />
+    <parent
+      link="L_Link0" />
+    <child
+      link="L_Link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="90"
+      velocity="1.31" />
+  </joint>
+  <link
+    name="L_Link2">
+    <inertial>
+      <origin
+        xyz="0.000857159054628465 -0.0688556150992958 -0.0219475431582306"
+        rpy="0 0 0" />
+      <mass
+        value="0.211155173164178" />
+      <inertia
+        ixx="0.00099680616846942"
+        ixy="7.35505061258559E-06"
+        ixz="3.30420389247683E-06"
+        iyy="0.000405576840374361"
+        iyz="-0.000263492222121101"
+        izz="0.000942075280953054" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.052"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.052"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_joint2"
+    type="revolute">
+    <origin
+      xyz="0.0007 0.0 0.107"
+      rpy="-1.5708 -0.0 -0.0" />
+    <parent
+      link="L_Link1" />
+    <child
+      link="L_Link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.09"
+      upper="2.09"
+      effort="90"
+      velocity="1.31" />
+  </joint>
+  <link
+    name="L_Link3">
+    <inertial>
+      <origin
+        xyz="-0.000502019625280736 -0.0161731705290906 0.0585188339670352"
+        rpy="0 0 0" />
+      <mass
+        value="0.17490126281718" />
+      <inertia
+        ixx="0.000566836297288879"
+        ixy="1.50176831737645E-07"
+        ixz="3.02203024327442E-07"
+        iyy="0.000579069255779677"
+        iyz="3.49864551490562E-05"
+        izz="0.000240420030304234" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_joint3"
+    type="revolute">
+    <origin
+      xyz="0.00 -0.19068 0 "
+      rpy="1.5708 -0.00 0.0" />
+    <parent
+      link="L_Link2" />
+    <child
+      link="L_Link3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="67"
+      velocity="1.31" />
+  </joint>
+  <link
+    name="L_Link4">
+    <inertial>
+      <origin
+        xyz="0.000816124678452601 -0.0673789710997609 -0.0227669323131372"
+        rpy="0 0 0" />
+      <mass
+        value="0.139141420083307" />
+      <inertia
+        ixx="0.00056729628586642"
+        ixy="4.51473982393015E-06"
+        ixz="1.91083305732679E-06"
+        iyy="0.000225919086974947"
+        iyz="-0.000151217366445457"
+        izz="0.000540296323987622" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.0496"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.0496"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_joint4"
+    type="revolute">
+    <origin
+      xyz="-0.000 0.0 0.1013"
+      rpy="-1.5708 -0.0 -0.0" />
+    <parent
+      link="L_Link3" />
+    <child
+      link="L_Link4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.09"
+      upper="2.09"
+      effort="67"
+      velocity="1.31" />
+  </joint>
+  <link
+    name="L_Link5">
+    <inertial>
+      <origin
+        xyz="-4.29302225295469E-05 -0.0122054741831609 0.0309080414213873"
+        rpy="0 0 0" />
+      <mass
+        value="0.0974186108051673" />
+      <inertia
+        ixx="0.000193993763249076"
+        ixy="-1.08151386702443E-08"
+        ixz="1.12865581638743E-07"
+        iyy="0.000192392251466149"
+        iyz="2.59299754635995E-05"
+        izz="0.00011605204613654" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_joint5"
+    type="revolute">
+    <origin
+      xyz="0.00 -0.17419 -0.0"
+      rpy="1.5708 -0.00 0.0" />
+    <parent
+      link="L_Link4" />
+    <child
+      link="L_Link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="L_Link6">
+    <inertial>
+      <origin
+        xyz="0.000578002589833648 -0.0463011867222332 -0.0205916885454552"
+        rpy="0 0 0" />
+      <mass
+        value="0.0709945582242612" />
+      <inertia
+        ixx="0.000150339550887913"
+        ixy="9.87375759106794E-07"
+        ixz="4.30166297877036E-07"
+        iyy="6.97108294544225E-05"
+        iyz="-3.5343957204107E-05"
+        izz="0.000145966265729034" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.035"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.035"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_joint6"
+    type="revolute">
+    <origin
+      xyz="0.000 0.0 0.0678"
+      rpy="-1.5708 -0.0 -0.00" />
+    <parent
+      link="L_Link5" />
+    <child
+      link="L_Link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.09"
+      upper="2.09"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="L_Link7">
+    <inertial>
+      <origin
+        xyz="4.60523932026558E-05 8.96532549643503E-07 0.0214613080243776"
+        rpy="0 0 0" />
+      <mass
+        value="0.069591475741743" />
+      <inertia
+        ixx="0.000100578251230889"
+        ixy="-5.19958958347684E-08"
+        ixz="-5.45711696598764E-08"
+        iyy="8.85989894975445E-05"
+        iyz="6.15630197980581E-09"
+        izz="8.88086576481483E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_Link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_joint7"
+    type="revolute">
+    <origin
+      xyz="0.00 -0.12909 -0.0"
+      rpy="1.5708 -0.00 0.0" />
+    <parent
+      link="L_Link6" />
+    <child
+      link="L_Link7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="33"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="L_ee" />
+  <joint
+    name="L_end_fixed"
+    type="fixed">
+    <origin
+      xyz="0 0 0.105"
+      rpy="0 0 0" />
+    <parent
+      link="L_Link7" />
+    <child
+      link="L_ee" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="L_left_finger">
+    <inertial>
+      <origin
+        xyz="0.0320300911336966 0.0191580149745619 1.65254374870916E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0222031203695293" />
+      <inertia
+        ixx="2.94895437947066E-06"
+        ixy="-2.74026245995243E-06"
+        ixz="3.48998944902299E-09"
+        iyy="1.31997477985414E-05"
+        iyz="-1.523937902794E-09"
+        izz="1.31922323060758E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_left_finger.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_left_finger.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_left_joint"
+    type="revolute">
+    <origin
+      xyz="0.00010863 0.028 0.0584"
+      rpy="1.5708 -1.3107 -1.5747" />
+    <parent
+      link="L_Link7" />
+    <child
+      link="L_left_finger" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.35"
+      upper="0.35"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="L_right_finger">
+    <inertial>
+      <origin
+        xyz="0.0374350483372549 -0.000661225509474506 -1.65200352733041E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0222031598698606" />
+      <inertia
+        ixx="2.96928300709427E-06"
+        ixy="-2.85846959892981E-06"
+        ixz="-2.56668795513893E-09"
+        iyy="1.31704010800968E-05"
+        iyz="-2.8970724658086E-09"
+        izz="1.31832096813533E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_right_finger.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/L_right_finger.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_right_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00010863 -0.028 0.0584"
+      rpy="1.5708 -1.3107 -1.5747" />
+    <parent
+      link="L_Link7" />
+    <child
+      link="L_right_finger" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.35"
+      upper="0.35"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="R_Link0">
+    <inertial>
+      <origin
+        xyz="-0.705949828103567 -0.0617435709172465 -0.0519210672148267"
+        rpy="0 0 0" />
+      <mass
+        value="44.8536262663904" />
+      <inertia
+        ixx="3.33720272867562"
+        ixy="0.737896863784547"
+        ixz="-0.500242330782589"
+        iyy="11.1713307608221"
+        iyz="-0.344327247077981"
+        izz="10.7652869473953" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.282475067184404 -0.0754489025211679 1.1559501936252"
+      rpy="0 -1.56230906164837 2.09271386565402" />
+    <parent
+      link="base_link" />
+    <child
+      link="R_Link0" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="R_Link1">
+    <inertial>
+      <origin
+        xyz="-8.80730212726721E-05 -0.0156519826446752 0.0601157869098909"
+        rpy="0 0 0" />
+      <mass
+        value="0.225988503121511" />
+      <inertia
+        ixx="0.000855056493906698"
+        ixy="2.56076634162957E-07"
+        ixz="8.29560067350113E-07"
+        iyy="0.000896207358258187"
+        iyz="6.58679338631613E-05"
+        izz="0.000416131483281957" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0675"
+      rpy="5.0515E-14 7.1106E-15 4.2748E-16" />
+    <parent
+      link="R_Link0" />
+    <child
+      link="R_Link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="90"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="R_Link2">
+    <inertial>
+      <origin
+        xyz="0.000855446580232622 -0.0688556657921777 -0.0219476027776705"
+        rpy="0 0 0" />
+      <mass
+        value="0.211155390534304" />
+      <inertia
+        ixx="0.000996807167364456"
+        ixy="7.34046811397431E-06"
+        ixz="3.29819398216218E-06"
+        iyy="0.00040557671982896"
+        iyz="-0.000263492282504201"
+        izz="0.000942075587938676" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.052"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.052"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_joint2"
+    type="revolute">
+    <origin
+      xyz="0.00036098 0 0.107"
+      rpy="-1.5708 -0.0 -0.00" />
+    <parent
+      link="R_Link1" />
+    <child
+      link="R_Link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.09"
+      upper="2.09"
+      effort="90"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="R_Link3">
+    <inertial>
+      <origin
+        xyz="-0.000124308636626935 -0.0161728550503237 0.0585188481364759"
+        rpy="0 0 0" />
+      <mass
+        value="0.174901365038314" />
+      <inertia
+        ixx="0.000566837830675693"
+        ixy="1.87641076312855E-07"
+        ixz="4.09346511538344E-07"
+        iyy="0.00057906863650209"
+        iyz="3.49852208079504E-05"
+        izz="0.000240420085764592" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_joint3"
+    type="revolute">
+    <origin
+      xyz="0.000 -0.19069 -0.00"
+      rpy="1.5708 -0.000 0.00" />
+    <parent
+      link="R_Link2" />
+    <child
+      link="R_Link3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="67"
+      velocity="1.31" />
+  </joint>
+  <link
+    name="R_Link4">
+    <inertial>
+      <origin
+        xyz="0.000814622172446322 -0.0673803573274671 -0.0227673778995151"
+        rpy="0 0 0" />
+      <mass
+        value="0.139139841811024" />
+      <inertia
+        ixx="0.000567281709376824"
+        ixy="4.50372009169932E-06"
+        ixz="1.90649602099204E-06"
+        iyy="0.000225916537752781"
+        iyz="-0.000151211158915554"
+        izz="0.000540282597292521" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.0497"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.0497"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_joint4"
+    type="revolute">
+    <origin
+      xyz="0.000 0.0 0.1013"
+      rpy="-1.5708 -0.0 -0.00" />
+    <parent
+      link="R_Link3" />
+    <child
+      link="R_Link4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.09"
+      upper="2.09"
+      effort="67"
+      velocity="1.31" />
+  </joint>
+  <link
+    name="R_Link5">
+    <inertial>
+      <origin
+        xyz="-8.04048459572826E-05 -0.0122051729745975 0.0309080270457396"
+        rpy="0 0 0" />
+      <mass
+        value="0.0974186804244123" />
+      <inertia
+        ixx="0.000193994421900863"
+        ixy="-1.48441435535215E-08"
+        ixz="1.92065206689152E-07"
+        iyy="0.000192391989673925"
+        iyz="2.59297669656422E-05"
+        izz="0.000116052397783966" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_joint5"
+    type="revolute">
+    <origin
+      xyz="0.0 -0.17419 -0.0"
+      rpy="1.5708 -0.00 0.0" />
+    <parent
+      link="R_Link4" />
+    <child
+      link="R_Link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="R_Link6">
+    <inertial>
+      <origin
+        xyz="0.00057688303394654 -0.0463012841468418 -0.0205917105833053"
+        rpy="0 0 0" />
+      <mass
+        value="0.0709944248375274" />
+      <inertia
+        ixx="0.000150339079631084"
+        ixy="9.85293191132637E-07"
+        ixz="4.29279485125423E-07"
+        iyy="6.97107575080967E-05"
+        iyz="-3.53438629902347E-05"
+        izz="0.000145965793514426" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.035"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.035"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_joint6"
+    type="revolute">
+    <origin
+      xyz="0.0000 0.00 0.0678"
+      rpy="-1.5708 -0.0 -0.00" />
+    <parent
+      link="R_Link5" />
+    <child
+      link="R_Link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.09"
+      upper="2.09"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="R_Link7">
+    <inertial>
+      <origin
+        xyz="4.59025706534E-05 7.68261343486731E-07 0.0214611806756081"
+        rpy="0 0 0" />
+      <mass
+        value="0.0695919740838392" />
+      <inertia
+        ixx="0.000100577880897543"
+        ixy="-8.86467756941057E-08"
+        ixz="-5.47756907756264E-08"
+        iyy="8.85997556235195E-05"
+        iyz="6.35168908512474E-09"
+        izz="8.88089262054172E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_Link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_joint7"
+    type="revolute">
+    <origin
+      xyz="0.000 -0.12909 -0.00"
+      rpy="1.5708 -0.00 0.0" />
+    <parent
+      link="R_Link6" />
+    <child
+      link="R_Link7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="33"
+      velocity="1.57" />
+  </joint>
+<link
+    name="R_ee" />
+  <joint
+    name="R_end_fixed"
+    type="fixed">
+    <origin
+      xyz="0 0 0.105"
+      rpy="0 0 0" />
+    <parent
+      link="R_Link7" />
+    <child
+      link="R_ee" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="R_left_finger">
+    <inertial>
+      <origin
+        xyz="0.0260955520414758 0.0268485052033585 1.65200056947423E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0222031599135879" />
+      <inertia
+        ixx="5.17634121269431E-06"
+        ixy="-5.08076804886169E-06"
+        ixz="3.86266085033788E-09"
+        iyy="1.09633428776348E-05"
+        iyz="-2.46941553078193E-10"
+        izz="1.31832096779791E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_left_finger.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_left_finger.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00019437 -0.027999 0.0584"
+      rpy="1.5708 -1.0489 1.5639" />
+    <parent
+      link="R_Link7" />
+    <child
+      link="R_left_finger" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.35"
+      upper="0.35"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="R_right_finger">
+    <inertial>
+      <origin
+        xyz="0.00900671737878619 -0.0361870762451453 -1.66044539418042E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0220974515411977" />
+      <inertia
+        ixx="1.08405524540199E-05"
+        ixy="5.11180404952526E-06"
+        ixz="-3.55147285863145E-09"
+        iyy="5.2928488567163E-06"
+        iyz="1.38783715682453E-09"
+        izz="1.31808678174573E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_right_finger.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/R_right_finger.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.00019437 0.027999 0.0584"
+      rpy="-1.5708 -0.52188 -1.5777" />
+    <parent
+      link="R_Link7" />
+    <child
+      link="R_right_finger" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.35"
+      upper="0.35"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="H_Link0">
+    <inertial>
+      <origin
+        xyz="-3.64915030415247E-08 1.33598927060108E-09 0.00960650891302395"
+        rpy="0 0 0" />
+      <mass
+        value="0.0282931710872259" />
+      <inertia
+        ixx="1.8670401636216E-05"
+        ixy="-4.46182201356798E-09"
+        ixz="9.39043454713441E-12"
+        iyy="1.60740322277107E-05"
+        iyz="-1.42201515331024E-13"
+        izz="3.22122742404417E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/H_Link0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/H_Link0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="H_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.279853342265354 -0.00124379273591871 1.21711625475335"
+      rpy="-0.010818106818609 0.00178669918881043 4.97599585242033E-15" />
+    <parent
+      link="base_link" />
+    <child
+      link="H_Link0" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="H_Link1">
+    <inertial>
+      <origin
+        xyz="-2.44685520338073E-05 -0.0142973955030197 0.072760781491529"
+        rpy="0 0 0" />
+      <mass
+        value="0.10617521841044" />
+      <inertia
+        ixx="0.000147239364786669"
+        ixy="2.0361743089092E-09"
+        ixz="4.6936401558984E-08"
+        iyy="0.000148433917490508"
+        iyz="2.77215024412505E-05"
+        izz="0.000112933232681004" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/H_Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/H_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="H_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 -3.3881E-21" />
+    <parent
+      link="H_Link0" />
+    <child
+      link="H_Link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+  <link
+    name="H_Link2">
+    <inertial>
+      <origin
+        xyz="0.00200202426531576 -0.0253562544549957 -0.0352939173499319"
+        rpy="0 0 0" />
+      <mass
+        value="0.0868734402381557" />
+      <inertia
+        ixx="0.000105856769329183"
+        ixy="1.12208917758946E-07"
+        ixz="2.88125239273472E-07"
+        iyy="9.58250674495025E-05"
+        iyz="-2.57391493711484E-05"
+        izz="8.87936149430763E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/H_Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wust_robot_description/meshes/H_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="H_joint2"
+    type="revolute">
+    <origin
+      xyz="-0.0016199 0.043603 0.091463"
+      rpy="-1.5708 -0.0017682 -0.0017204" />
+    <parent
+      link="H_Link1" />
+    <child
+      link="H_Link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+
+<!--transmission-->
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_joint1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_joint2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_joint3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_joint4">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_joint5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_joint6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_joint7">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran15">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_left_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor15">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran16">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_right_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor16">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_joint1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor8">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_joint2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor9">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran10">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_joint3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor10">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran11">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_joint4">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor11">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran12">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_joint5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor12">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran13">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_joint6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor13">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran14">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_joint7">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor14">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran17">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_left_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor17">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran18">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_right_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor18">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran19">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="H_joint1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor19">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran20">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="H_joint2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor20">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<gazebo reference="base_link">
+  <visual name="gazeboo_color_base_link">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/Grey</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="L_Link0">
+  <visual name="gazebo_color_Link7">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="L_Link1">
+  <visual name="gazebo_color_Link1">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="L_Link2">
+  <visual name="gazebo_color_Link2">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="L_Link3">
+  <visual name="gazebo_color_Link3">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+   </visual>
+</gazebo>
+
+<gazebo reference="L_Link4">
+  <visual name="gazebo_color_Link4">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="L_Link5">
+  <visual name="gazebo_color_Link5">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="L_Link6">
+  <visual name="gazebo_color_Link6">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="L_Link7">
+  <visual name="gazebo_color_Link7">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+  <implicitSpringDamper>1</implicitSpringDamper>
+  <kp>100000000.0</kp>
+  <kd>1.0</kd>
+  <mu1>200</mu1>
+  <mu2>200</mu2>
+  <maxVel>0.1</maxVel>
+  <minDepth>0.010</minDepth>
+</gazebo>
+
+<gazebo reference="L_left_finger">
+  <visual name="gazebo_color_left_gripper">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+  <implicitSpringDamper>1</implicitSpringDamper>
+  <kp>100000000.0</kp>
+  <kd>1.0</kd>
+  <mu1>200</mu1>
+  <mu2>200</mu2>
+  <maxVel>0.1</maxVel>
+  <minDepth>0.010</minDepth>
+</gazebo>
+
+<gazebo reference="L_right_finger">
+  <visual name="gazebo_color_right_gripper">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+  <implicitSpringDamper>1</implicitSpringDamper>
+  <kp>100000000.0</kp>
+  <kd>1.0</kd>
+  <mu1>200</mu1>
+  <mu2>200</mu2>
+  <maxVel>0.1</maxVel>
+  <minDepth>0.010</minDepth>
+</gazebo>
+
+<gazebo reference="R_Link0">
+   <visual name="gazebo_color_Link7">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+</gazebo>
+
+
+<gazebo reference="R_Link1">
+  <visual name="gazebo_color_R_Link1">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="R_Link2">
+  <visual name="gazebo_color_R_Link2">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="R_Link3">
+  <visual name="gazebo_color_R_Link3">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+   </visual>
+</gazebo>
+
+<gazebo reference="R_Link4">
+  <visual name="gazebo_color_R_Link4">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="R_Link5">
+  <visual name="gazebo_color_R_Link5">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="R_Link6">
+  <visual name="gazebo_color_R_Link6">
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/FlatBlack</name>
+      </script>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="R_Link7">
+  <visual name="gazebo_color_R_Link7">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+  <implicitSpringDamper>1</implicitSpringDamper>
+  <kp>100000000.0</kp>
+  <kd>1.0</kd>
+  <mu1>200</mu1>
+  <mu2>200</mu2>
+  <maxVel>1.0</maxVel>
+  <minDepth>0.010</minDepth>
+</gazebo>
+
+<gazebo reference="R_left_finger">
+  <visual name="gazebo_color_R_left_gripper">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+  <implicitSpringDamper>1</implicitSpringDamper>
+  <kp>100000000.0</kp>
+  <kd>1.0</kd>
+  <mu1>200</mu1>
+  <mu2>200</mu2>
+  <maxVel>0.1</maxVel>
+  <minDepth>0.010</minDepth>
+</gazebo>
+
+<gazebo reference="R_right_finger">
+  <visual name="gazebo_color_R_right_gripper">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+  <implicitSpringDamper>1</implicitSpringDamper>
+  <kp>100000000.0</kp>
+  <kd>1.0</kd>
+  <mu1>200</mu1>
+  <mu2>200</mu2>
+  <maxVel>0.1</maxVel>
+  <minDepth>0.010</minDepth>
+</gazebo>
+
+<gazebo reference="H_Link1">
+   <visual name="gazebo_color_Link7">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo reference="H_Link2">
+   <visual name="gazebo_color_Link7">
+    <material>
+      <ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+      <diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 0</emissive>
+    </material>
+  </visual>
+</gazebo>
+
+<gazebo>
+  <plugin name="gazebo_grasp_fix_1eft" filename="libgazebo_grasp_fix.so">
+    <arm>
+        <arm_name>left_arm</arm_name>
+        <palm_link>L_Link7</palm_link>
+        <gripper_link>L_left_finger</gripper_link>
+        <gripper_link>L_right_finger</gripper_link>
+    </arm>
+    <arm>
+        <arm_name>right_arm</arm_name>
+        <palm_link>R_Link7</palm_link>
+        <gripper_link>R_left_finger</gripper_link>
+        <gripper_link>R_right_finger</gripper_link>
+    </arm>
+    <forces_angle_tolerance>100</forces_angle_tolerance>
+    <update_rate>4</update_rate>
+    <grip_count_threshold>4</grip_count_threshold>
+    <max_grip_count>8</max_grip_count>
+    <release_tolerance>0.003</release_tolerance>
+    <disable_collisions_on_attach>false</disable_collisions_on_attach>
+    <contact_topic>__default_topic__</contact_topic>
+  </plugin>
+</gazebo>
+
+ <gazebo>
+    <plugin filename="libgazebo_ros_planar_move.so" name="mpo_500_controller">
+      <commandTopic>cmd_vel</commandTopic>
+      <leftFrontJoint>wheel_joint1</leftFrontJoint>
+      <rightFrontJoint>wheel_joint2</rightFrontJoint>
+      <leftRearJoint>wheel_joint3</leftRearJoint>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>20.0</odometryRate>
+      <robotBaseFrame>base_dummy</robotBaseFrame>
+    </plugin>
+ </gazebo>
+ 
+   <link name="camera_link">
+          <visual>
+             <origin xyz="0 -0.01 0" rpy="1.570795 0 1.570795"/>
+             <geometry>
+                <mesh filename="package://wust_robot_description/meshes/zr300.dae" />
+             </geometry>
+          </visual>
+         <collision>
+            <geometry>
+                <box size="0.01 0.155 0.035"/>
+           </geometry>
+        </collision>
+   </link>
+   <joint name="camera_joint" type="fixed">
+        <origin xyz="0 -0.045 -0.0438" rpy="1.570795 0 0"/>
+        <parent link="H_Link2"/>
+        <child link="camera_link"/>
+   </joint>  
+   
+   <link name="camera_depth_link">
+   </link>
+   
+   <joint name="camera_depth_joint" type="fixed">
+        <origin xyz="-0.003 -0.006 0.028" rpy="0 0 0"/>
+        <parent link="camera_link"/>
+        <child link="camera_depth_link"/>
+   </joint>
+   <link name="camera_depth_optical_link">
+   </link>
+   
+   <joint name="camera_depth_optical_joint" type="fixed">
+        <origin xyz="0.0 0 0" rpy="-1.570795 0 -1.570795"/>
+        <parent link="camera_depth_link"/>
+        <child link="camera_depth_optical_link"/>
+   </joint>
+   
+
+<gazebo reference="camera_depth_link">
+            <sensor type="depth" name="camera">
+                <always_on>true</always_on>
+                <update_rate>20.0</update_rate>
+                <camera>
+                    <horizontal_fov>1.047</horizontal_fov>
+                    <image>
+                        <format>R8G8B8</format>
+                        <width>640</width>
+                        <height>480</height>
+                    </image>
+                    <clip>
+                        <near>0.05</near>
+                        <far>4.0</far>
+                    </clip>
+                </camera>
+		<plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+                    <cameraName>camera</cameraName>
+                    <alwaysOn>true</alwaysOn>
+                    <updateRate>10</updateRate>
+                    <imageTopicName>rgb/image_raw</imageTopicName>
+                    <depthImageTopicName>depth/image_raw</depthImageTopicName>
+                    <pointCloudTopicName>depth/points</pointCloudTopicName>
+                    <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+                    <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+                    <frameName>camera_depth_optical_link</frameName>
+                    <baseline>0.1</baseline>
+                    <distortion_k1>0.0</distortion_k1>
+                    <distortion_k2>0.0</distortion_k2>
+                    <distortion_k3>0.0</distortion_k3>
+                    <distortion_t1>0.0</distortion_t1>
+                    <distortion_t2>0.0</distortion_t2>
+                    <pointCloudCutoff>0.4</pointCloudCutoff>
+                </plugin>
+            </sensor>
+        </gazebo>
+ </robot>
+ 
+ <!--<joint name="camera_joint" type="fixed">
+        <origin xyz="0.3 0 0.7" rpy="0 1.57 0"/>
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+   </joint>
+  
+
+   <link name="camera_link">
+       <collision>
+           <origin xyz="0 0 0" rpy="0 0 0"/>
+           <geometry>
+           <mesh filename="package://wust_robot_description/meshes/camera.STL" />
+           </geometry>
+       </collision> 
+
+       <visual>
+           <origin xyz="-0.8 0 0" rpy="-1.57 0 -1.57"/>
+           <geometry>
+           <mesh filename="package://wust_robot_description/meshes/camera.STL" />
+           </geometry>
+           <material name="red"/>
+       </visual>
+
+       <inertial>
+        <mass value="0.00001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+       </inertial>
+   </link>
+
+
+  <gazebo reference="camera_link">
+    <material>Gazebo/Red</material>
+
+    <sensor type="camera" name="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3</horizontal_fov>
+        < <horizontal_fov>0.95</horizontal_fov> >
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>wust_robot/camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+ </gazebo>
+ 
+ </robot>-->

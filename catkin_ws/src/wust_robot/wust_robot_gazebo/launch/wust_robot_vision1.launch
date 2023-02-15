@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="robot_name" default="wust_robot"/>
+  <arg name="debug" default="false" />
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find wust_robot_gazebo)/worlds/wust_robot_vision1.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+  <include file="$(find wust_robot_gazebo)/launch/wust_robot_spawn.launch"/>   
+
+</launch>

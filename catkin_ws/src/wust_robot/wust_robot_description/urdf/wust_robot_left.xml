@@ -1,0 +1,6 @@
+<robot file="wust_robot.dae">
+        <Manipulator name="left_arm">
+          <base>L_Link0</base>
+          <effector>L_ee</effector>
+        </Manipulator>
+</robot>

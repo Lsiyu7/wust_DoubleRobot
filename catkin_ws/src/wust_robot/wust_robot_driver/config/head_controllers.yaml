@@ -1,0 +1,21 @@
+# Settings for ros_control control loop
+head_hardware_control_loop:
+   loop_hz: 100
+
+# Settings for ros_control hardware interface
+head_hardware_interface:
+   peak_can_device:
+     num: 1
+     device0: pcanusb3
+   joints:
+   - H_joint1
+   - H_joint2
+   jointID:
+   - 21
+   - 22
+   jointDevice:
+   - device0
+   - device0
+
+
+

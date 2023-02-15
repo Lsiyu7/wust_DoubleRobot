@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: wust_description
+    relative_path: urdf/wust_robot.urdf
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/wust_robot.srdf
+  CONFIG:
+    author_name: zjy
+    author_email: 547080770@qq.com
+    generated_timestamp: 1558354037

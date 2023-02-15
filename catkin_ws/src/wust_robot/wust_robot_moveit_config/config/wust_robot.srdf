@@ -1,0 +1,366 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="wust_robot">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="left_arm">
+        <chain base_link="L_Link0" tip_link="L_ee" />
+    </group>
+    <group name="right_arm">
+        <chain base_link="R_Link0" tip_link="R_ee" />
+    </group>
+    <group name="left_gripper">
+        <joint name="L_left_joint" />
+        <joint name="L_right_joint" />
+    </group>
+    <group name="right_gripper">
+        <joint name="R_left_joint" />
+        <joint name="R_right_joint" />
+    </group>
+    <group name="dual_arm">
+        <group name="left_arm" />
+        <group name="right_arm" />
+    </group>
+    <group name="dual_gripper">
+        <group name="left_gripper" />
+        <group name="right_gripper" />
+    </group>
+    <group name="head">
+        <chain base_link="H_Link0" tip_link="camera_link" />
+    </group>
+    <group name="all">
+        <group name="left_arm" />
+        <group name="right_arm" />
+        <group name="left_gripper" />
+        <group name="right_gripper" />
+        <group name="head" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="zero" group="all">
+        <joint name="L_joint1" value="0" />
+        <joint name="L_joint2" value="0" />
+        <joint name="L_joint3" value="0" />
+        <joint name="L_joint4" value="0" />
+        <joint name="L_joint5" value="0" />
+        <joint name="L_joint6" value="0" />
+        <joint name="L_joint7" value="0" />
+        <joint name="R_joint1" value="0" />
+        <joint name="R_joint2" value="0" />
+        <joint name="R_joint3" value="0" />
+        <joint name="R_joint4" value="0" />
+        <joint name="R_joint5" value="0" />
+        <joint name="R_joint6" value="0" />
+        <joint name="R_joint7" value="0" />
+        <joint name="L_left_joint" value="0.35"/>
+        <joint name="L_right_joint" value="-0.35"/>
+        <joint name="R_left_joint" value="0.35"/>
+        <joint name="R_right_joint" value="-0.35"/>
+        <joint name="H_joint1" value="0" />
+        <joint name="H_joint2" value="0" />
+    </group_state>
+   <group_state name="forward" group="all">
+        <joint name="H_joint1" value="0" />
+        <joint name="H_joint2" value="0" />
+        <joint name="L_joint1" value="-1.2449394588267104" />
+        <joint name="L_joint2" value="0.7267167390338871" />
+        <joint name="L_joint3" value="-2.7558013889594584" />
+        <joint name="L_joint4" value="-1.5485230372048226" />
+        <joint name="L_joint5" value="-2.7618887530979057" />
+        <joint name="L_joint6" value="-1.3956576699697596" />
+        <joint name="L_joint7" value="2.5138084457886407" />
+        <joint name="R_joint1" value="1.3889021011863294" />
+        <joint name="R_joint2" value="-0.8357131346902591" />
+        <joint name="R_joint3" value="-0.6378633155083309" />
+        <joint name="R_joint4" value="-1.516311710545823" />
+        <joint name="R_joint5" value="2.8896298042591093" />
+        <joint name="R_joint6" value="-1.4522432336642295" />
+        <joint name="R_joint7" value="0.7718102472528701" />
+        <joint name="L_left_joint" value="0.35"/>
+        <joint name="L_right_joint" value="-0.35"/>
+        <joint name="R_left_joint" value="0.35"/>
+        <joint name="R_right_joint" value="-0.35"/>
+    </group_state>
+    <group_state name="test2" group="all">
+        <joint name="H_joint1" value="0" />
+        <joint name="H_joint2" value="0" />
+        <joint name="L_joint1" value="-0.07750710111868209" />
+        <joint name="L_joint2" value="1.3102335165486165" />
+        <joint name="L_joint3" value="-1.370929333716667" />
+        <joint name="L_joint4" value="1.1527116308231706" />
+        <joint name="L_joint5" value="-1.3667272720028967" />
+        <joint name="L_joint6" value="0.6964707027546115" />
+        <joint name="L_joint7" value="-0.612410027898215" />
+        <joint name="R_joint1" value="0.07750710111868209" />
+        <joint name="R_joint2" value="-1.3102335165486165" />
+        <joint name="R_joint3" value="1.370929333716667" />
+        <joint name="R_joint4" value="-1.1527116308231706" />
+        <joint name="R_joint5" value="1.3667272720028967" />
+        <joint name="R_joint6" value="-0.6964707027546115" />
+        <joint name="R_joint7" value="0.612410027898215" />
+        <joint name="L_left_joint" value="0.35"/>
+        <joint name="L_right_joint" value="-0.35"/>
+        <joint name="R_left_joint" value="0.35"/>
+        <joint name="R_right_joint" value="-0.35"/>
+    </group_state>
+    <group_state name="chongdian2" group="all">
+        <joint name="H_joint1" value="0" />
+        <joint name="H_joint2" value="0" />
+        <joint name="L_joint1" value="-0.64476839819205" />
+        <joint name="L_joint2" value="0.07966848591594644" />
+        <joint name="L_joint3" value="-3.041833976035255" />
+        <joint name="L_joint4" value="-0.991394268068138" />
+        <joint name="L_joint5" value="-1.8730602014727085" />
+        <joint name="L_joint6" value="-0.8834225914428862" />
+        <joint name="L_joint7" value="1.3343048390214545" />
+        <joint name="R_joint1" value="-1.2888838515239947" />
+        <joint name="R_joint2" value="-0.124636579408401" />
+        <joint name="R_joint3" value="0.7540014958470378" />
+        <joint name="R_joint4" value="-1.2172422557382072" />
+        <joint name="R_joint5" value="-2.1191534893117616" />
+        <joint name="R_joint6" value="-0.9616125119245975" />
+        <joint name="R_joint7" value="-1.5341645826037835" />
+        <joint name="L_left_joint" value="0"/>
+        <joint name="L_right_joint" value="0"/>
+        <joint name="R_left_joint" value="0"/>
+        <joint name="R_right_joint" value="0"/>
+    </group_state>
+    <group_state name="chongdian" group="all">
+        <joint name="H_joint1" value="0" />
+        <joint name="H_joint2" value="0" />
+        <joint name="L_joint1" value="-1.144873107380164" />
+        <joint name="L_joint2" value="0.7318830514054717" />
+        <joint name="L_joint3" value="-2.937309094829093" />
+        <joint name="L_joint4" value="-1.5416991934366777" />
+        <joint name="L_joint5" value="-2.71648874920312" />
+        <joint name="L_joint6" value="-1.3704646275477534" />
+        <joint name="L_joint7" value="2.3466809384615672" />
+        <joint name="R_joint1" value="-1.3888354825195686" />
+        <joint name="R_joint2" value="-0.8634167963531816" />
+        <joint name="R_joint3" value="0.6234235243782482" />
+        <joint name="R_joint4" value="-1.504642070816331" />
+        <joint name="R_joint5" value="-2.9071857762543907" />
+        <joint name="R_joint6" value="-1.4588692534223462" />
+        <joint name="R_joint7" value="-0.9293037926948164" />
+        <joint name="L_left_joint" value="0"/>
+        <joint name="L_right_joint" value="0"/>
+        <joint name="R_left_joint" value="0"/>
+        <joint name="R_right_joint" value="0"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="left_end" parent_link="L_ee" group="left_gripper" />
+    <end_effector name="right_end" parent_link="R_ee" group="right_gripper" />
+    <end_effector name="head_end" parent_link="H_Link2" group="head" />
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <!--virtual_joint name="world_joint" type="planar" parent_frame="odom_combined" child_link="base_link" /-->
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="camera_link" link2="H_Link0" reason="Never" />
+    <disable_collisions link1="camera_link" link2="H_Link1" reason="Never" />
+    <disable_collisions link1="camera_link" link2="H_Link2" reason="Never" />
+    <disable_collisions link1="camera_link" link2="L_Link0" reason="Never" />
+    <disable_collisions link1="camera_link" link2="L_Link1" reason="Never" />
+    <disable_collisions link1="camera_link" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="camera_link" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="camera_link" link2="base_link" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="H_Link1" reason="Adjacent" />
+    <disable_collisions link1="H_Link0" link2="H_Link2" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="L_Link0" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="L_Link1" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="L_Link2" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="L_Link3" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="L_Link4" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="R_Link4" reason="Never" />
+    <disable_collisions link1="H_Link0" link2="base_link" reason="Adjacent" />
+    <disable_collisions link1="H_Link1" link2="H_Link2" reason="Adjacent" />
+    <disable_collisions link1="H_Link1" link2="L_Link0" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="L_Link1" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="L_Link2" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="L_Link3" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="H_Link1" link2="base_link" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="L_Link0" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="L_Link1" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="L_Link2" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="L_Link3" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="H_Link2" link2="base_link" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="L_Link1" reason="Adjacent" />
+    <disable_collisions link1="L_Link0" link2="L_Link2" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="L_Link3" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="L_Link4" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="L_Link5" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="L_Link6" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="R_Link4" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="base_link" reason="Adjacent" />
+    <disable_collisions link1="L_Link0" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link0" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="L_Link2" reason="Adjacent" />
+    <disable_collisions link1="L_Link1" link2="L_Link3" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="L_Link4" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="L_Link5" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="L_Link6" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="R_Link4" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="base_link" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link1" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="L_Link3" reason="Adjacent" />
+    <disable_collisions link1="L_Link2" link2="L_Link4" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="L_Link5" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="L_Link6" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link2" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="L_Link4" reason="Adjacent" />
+    <disable_collisions link1="L_Link3" link2="L_Link5" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="L_Link6" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="L_Link7" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="L_left_finger" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="L_right_finger" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link3" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="L_Link5" reason="Adjacent" />
+    <disable_collisions link1="L_Link4" link2="L_Link6" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="L_Link7" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="L_left_finger" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="L_right_finger" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="R_Link0" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="R_Link1" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link4" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_Link5" link2="L_Link6" reason="Adjacent" />
+    <disable_collisions link1="L_Link5" link2="L_Link7" reason="Never" />
+    <disable_collisions link1="L_Link5" link2="L_left_finger" reason="Never" />
+    <disable_collisions link1="L_Link5" link2="L_right_finger" reason="Never" />
+    <disable_collisions link1="L_Link5" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link5" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link5" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_Link6" link2="L_Link7" reason="Adjacent" />
+    <disable_collisions link1="L_Link6" link2="L_left_finger" reason="Never" />
+    <disable_collisions link1="L_Link6" link2="L_right_finger" reason="Never" />
+    <disable_collisions link1="L_Link6" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link6" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link6" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_Link7" link2="L_left_finger" reason="Adjacent" />
+    <disable_collisions link1="L_Link7" link2="L_right_finger" reason="Adjacent" />
+    <disable_collisions link1="L_Link7" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_Link7" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_Link7" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_left_finger" link2="L_right_finger" reason="Never" />
+    <disable_collisions link1="L_left_finger" link2="R_left_finger" reason="Never" />
+    <disable_collisions link1="L_left_finger" link2="R_right_finger" reason="Never" />
+    <disable_collisions link1="L_left_finger" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_left_finger" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_left_finger" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="L_right_finger" link2="R_right_finger" reason="Never" />
+    <disable_collisions link1="L_right_finger" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="L_right_finger" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="L_right_finger" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="R_Link1" reason="Adjacent" />
+    <disable_collisions link1="R_Link0" link2="R_Link2" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="R_Link4" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="R_Link5" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="R_Link6" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="base_link" reason="Adjacent" />
+    <disable_collisions link1="R_Link0" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link0" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="R_Link2" reason="Adjacent" />
+    <disable_collisions link1="R_Link1" link2="R_Link3" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="R_Link4" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="R_Link5" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="R_Link6" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="base_link" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link1" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link2" link2="R_Link3" reason="Adjacent" />
+    <disable_collisions link1="R_Link2" link2="R_Link4" reason="Never" />
+    <disable_collisions link1="R_Link2" link2="R_Link5" reason="Never" />
+    <disable_collisions link1="R_Link2" link2="R_Link6" reason="Never" />
+    <disable_collisions link1="R_Link2" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link2" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link2" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="R_Link4" reason="Adjacent" />
+    <disable_collisions link1="R_Link3" link2="R_Link5" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="R_Link6" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="R_Link7" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="R_left_finger" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="R_right_finger" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link3" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link4" link2="R_Link5" reason="Adjacent" />
+    <disable_collisions link1="R_Link4" link2="R_Link6" reason="Never" />
+    <disable_collisions link1="R_Link4" link2="R_Link7" reason="Never" />
+    <disable_collisions link1="R_Link4" link2="R_left_finger" reason="Never" />
+    <disable_collisions link1="R_Link4" link2="R_right_finger" reason="Never" />
+    <disable_collisions link1="R_Link4" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link4" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link4" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link5" link2="R_Link6" reason="Adjacent" />
+    <disable_collisions link1="R_Link5" link2="R_Link7" reason="Never" />
+    <disable_collisions link1="R_Link5" link2="R_left_finger" reason="Never" />
+    <disable_collisions link1="R_Link5" link2="R_right_finger" reason="Never" />
+    <disable_collisions link1="R_Link5" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link5" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link5" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link6" link2="R_Link7" reason="Adjacent" />
+    <disable_collisions link1="R_Link6" link2="R_left_finger" reason="Never" />
+    <disable_collisions link1="R_Link6" link2="R_right_finger" reason="Never" />
+    <disable_collisions link1="R_Link6" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link6" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link6" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_Link7" link2="R_left_finger" reason="Adjacent" />
+    <disable_collisions link1="R_Link7" link2="R_right_finger" reason="Adjacent" />
+    <disable_collisions link1="R_Link7" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_Link7" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_Link7" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_left_finger" link2="R_right_finger" reason="Never" />
+    <disable_collisions link1="R_left_finger" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_left_finger" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_left_finger" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="R_right_finger" link2="wheel_Link1" reason="Never" />
+    <disable_collisions link1="R_right_finger" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="R_right_finger" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="base_link" link2="wheel_Link1" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="wheel_Link2" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="wheel_Link3" reason="Adjacent" />
+    <disable_collisions link1="wheel_Link1" link2="wheel_Link2" reason="Never" />
+    <disable_collisions link1="wheel_Link1" link2="wheel_Link3" reason="Never" />
+    <disable_collisions link1="wheel_Link2" link2="wheel_Link3" reason="Never" />
+</robot>

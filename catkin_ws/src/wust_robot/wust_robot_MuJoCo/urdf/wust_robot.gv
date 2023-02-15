@@ -1,0 +1,83 @@
+digraph G {
+node [shape=box];
+"base_dummy" [label="base_dummy"];
+"base_link" [label="base_link"];
+"L_Link0" [label="L_Link0"];
+"L_Link1" [label="L_Link1"];
+"L_Link2" [label="L_Link2"];
+"L_Link3" [label="L_Link3"];
+"L_Link4" [label="L_Link4"];
+"L_Link5" [label="L_Link5"];
+"L_Link6" [label="L_Link6"];
+"L_Link7" [label="L_Link7"];
+"L_ee" [label="L_ee"];
+"L_left_finger" [label="L_left_finger"];
+"L_right_finger" [label="L_right_finger"];
+"R_Link0" [label="R_Link0"];
+"R_Link1" [label="R_Link1"];
+"R_Link2" [label="R_Link2"];
+"R_Link3" [label="R_Link3"];
+"R_Link4" [label="R_Link4"];
+"R_Link5" [label="R_Link5"];
+"R_Link6" [label="R_Link6"];
+"R_Link7" [label="R_Link7"];
+"R_ee" [label="R_ee"];
+"R_left_finger" [label="R_left_finger"];
+"R_right_finger" [label="R_right_finger"];
+"wheel_Link1" [label="wheel_Link1"];
+"wheel_Link2" [label="wheel_Link2"];
+"wheel_Link3" [label="wheel_Link3"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_dummy" -> "dummy_fixed" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"dummy_fixed" -> "base_link"
+"base_link" -> "L_fixed" [label="xyz: -0.277217 0.0764468 1.1543 \nrpy: 3.14159 1.56054 -2.09613"]
+"L_fixed" -> "L_Link0"
+"L_Link0" -> "L_joint1" [label="xyz: 0 0 0.0575 \nrpy: -3.6214e-14 -1.1852e-14 -8.874e-06"]
+"L_joint1" -> "L_Link1"
+"L_Link1" -> "L_joint2" [label="xyz: 0.00020127 0.052 0.107 \nrpy: -1.5708 -0.012504 -0.0038706"]
+"L_joint2" -> "L_Link2"
+"L_Link2" -> "L_joint3" [label="xyz: 0.0028116 -0.19068 -0.051998 \nrpy: 1.5708 -0.0038795 0.012504"]
+"L_joint3" -> "L_Link3"
+"L_Link3" -> "L_joint4" [label="xyz: -0.00023443 0.0497 0.1013 \nrpy: -1.5708 -0.012504 -0.0038795"]
+"L_joint4" -> "L_Link4"
+"L_Link4" -> "L_joint5" [label="xyz: 0.0021781 -0.17419 -0.0497 \nrpy: 1.5708 -0.0038795 0.012504"]
+"L_joint5" -> "L_Link5"
+"L_Link5" -> "L_joint6" [label="xyz: 0.00013617 0.0351 0.0678 \nrpy: -1.5708 -0.012504 -0.0038795"]
+"L_joint6" -> "L_Link6"
+"L_Link6" -> "L_joint7" [label="xyz: 0.0016142 -0.12909 -0.0351 \nrpy: 1.5708 -0.0038795 0.012504"]
+"L_joint7" -> "L_Link7"
+"L_Link7" -> "L_end_fixed" [label="xyz: 0 0 0.105 \nrpy: 0 -0 0"]
+"L_end_fixed" -> "L_ee"
+"L_Link7" -> "L_left_joint" [label="xyz: 0.00010863 0.028 0.0584 \nrpy: 1.5708 -1.3107 -1.5747"]
+"L_left_joint" -> "L_left_finger"
+"L_Link7" -> "L_right_joint" [label="xyz: -0.00010863 -0.028 0.0584 \nrpy: 1.5708 -1.3107 -1.5747"]
+"L_right_joint" -> "L_right_finger"
+"base_link" -> "R_fixed" [label="xyz: -0.282475 -0.0754489 1.15595 \nrpy: 0 -1.56231 2.09271"]
+"R_fixed" -> "R_Link0"
+"R_Link0" -> "R_joint1" [label="xyz: 0 0 0.0675 \nrpy: 5.0515e-14 6.1947e-15 4.2848e-16"]
+"R_joint1" -> "R_Link1"
+"R_Link1" -> "R_joint2" [label="xyz: 0.00036098 0.051999 0.107 \nrpy: -1.5708 -0.012479 -0.006942"]
+"R_joint2" -> "R_Link2"
+"R_Link2" -> "R_joint3" [label="xyz: 0.0023797 -0.19069 -0.052 \nrpy: 1.5708 1.5639 0.012479"]
+"R_joint3" -> "R_Link3"
+"R_Link3" -> "R_joint4" [label="xyz: -0.049699 0.00034501 0.1013 \nrpy: -1.5708 -0.012479 1.5639"]
+"R_joint4" -> "R_Link4"
+"R_Link4" -> "R_joint5" [label="xyz: 0.0021738 -0.17419 -0.0497 \nrpy: 1.5708 -0.006942 0.012479"]
+"R_joint5" -> "R_Link5"
+"R_Link5" -> "R_joint6" [label="xyz: 0.00024366 0.035099 0.0678 \nrpy: -1.5708 -0.012479 -0.006942"]
+"R_joint6" -> "R_Link6"
+"R_Link6" -> "R_joint7" [label="xyz: 0.001611 -0.12909 -0.0351 \nrpy: 1.5708 -0.006942 0.012479"]
+"R_joint7" -> "R_Link7"
+"R_Link7" -> "R_end_fixed" [label="xyz: 0 0 0.105 \nrpy: 0 -0 0"]
+"R_end_fixed" -> "R_ee"
+"R_Link7" -> "R_left_joint" [label="xyz: -0.00019437 -0.027999 0.0584 \nrpy: 1.5708 -1.0489 1.5639"]
+"R_left_joint" -> "R_left_finger"
+"R_Link7" -> "R_right_joint" [label="xyz: 0.00019437 0.027999 0.0584 \nrpy: -1.5708 -0.52188 -1.5777"]
+"R_right_joint" -> "R_right_finger"
+"base_link" -> "wheel_joint1" [label="xyz: -0.103621 0.316965 0.0402 \nrpy: 1.5708 -0 2.61799"]
+"wheel_joint1" -> "wheel_Link1"
+"base_link" -> "wheel_joint2" [label="xyz: -0.652621 0 0.0402 \nrpy: 1.5708 -0 -1.5708"]
+"wheel_joint2" -> "wheel_Link2"
+"base_link" -> "wheel_joint3" [label="xyz: -0.103621 -0.316965 0.0402 \nrpy: 1.5708 -0 0.523599"]
+"wheel_joint3" -> "wheel_Link3"
+}

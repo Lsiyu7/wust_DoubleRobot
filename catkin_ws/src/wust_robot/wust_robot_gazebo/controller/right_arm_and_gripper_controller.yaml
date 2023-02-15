@@ -1,0 +1,50 @@
+right_arm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - R_joint1
+     - R_joint2
+     - R_joint3
+     - R_joint4
+     - R_joint5
+     - R_joint6
+     - R_joint7
+  pid:
+      R_joint1: {p: 100.0, i: 0.01, d: 10.0}
+      R_joint2: {p: 100.0, i: 0.01, d: 10.0}
+      R_joint3: {p: 100.0, i: 0.01, d: 10.0}
+      R_joint4: {p: 100.0, i: 0.01, d: 10.0}
+      R_joint5: {p: 100.0, i: 0.01, d: 10.0}
+      R_joint6: {p: 100.0, i: 0.01, d: 10.0}
+      R_joint7: {p: 100.0, i: 0.01, d: 10.0}
+  constraints:
+      goal_time: 1.0
+      stopped_velocity_tolerance: 0.1
+      R_joint1: {trajectory: 0.1, goal: 0.1}
+      R_joint2: {trajectory: 0.1, goal: 0.1}
+      R_joint3: {trajectory: 0.1, goal: 0.1}
+      R_joint4: {trajectory: 0.1, goal: 0.1}
+      R_joint5: {trajectory: 0.1, goal: 0.1}
+      R_joint6: {trajectory: 0.1, goal: 0.1}
+      R_joint7: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  50
+  action_monitor_rate: 20
+
+right_gripper_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - R_left_joint
+     - R_right_joint
+  pid:
+      R_left_joint: {p: 50.0, i: 0.01, d: 10.0}
+      R_right_joint: {p: 50.0, i: 0.01, d: 10.0}
+  constraints:
+      goal_time: 1.0
+      stopped_velocity_tolerance: 0.1
+      R_left_joint: {trajectory: 0.1, goal: 0.1}
+      R_right_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  50
+  action_monitor_rate: 20
+
+

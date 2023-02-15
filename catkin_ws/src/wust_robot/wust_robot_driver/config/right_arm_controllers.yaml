@@ -1,0 +1,40 @@
+# Settings for ros_control control loop
+right_arm_hardware_control_loop:
+   loop_hz: 100
+
+# Settings for ros_control hardware interface
+right_arm_hardware_interface:
+   peak_can_device:
+     num: 1
+     device0: pcanusb2
+   joints:
+   - R_joint1
+   - R_joint2
+   - R_joint3
+   - R_joint4
+   - R_joint5
+   - R_joint6
+   - R_joint7
+   jointID:
+   - 11
+   - 12
+   - 13
+   - 14
+   - 15
+   - 16
+   - 17
+   jointDevice:
+   - device0
+   - device0
+   - device0
+   - device0
+   - device0
+   - device0
+   - device0
+   grippers:
+   - Gripper2
+   gripperID:
+   - 18
+   gripperDevice:
+   - device0
+

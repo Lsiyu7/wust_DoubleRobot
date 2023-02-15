@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<library path="lib/libwust_robot_right_arm_moveit_ikfast_plugin">
+  <class name="wust_robot_right_arm_kinematics/NewIKFastKinematicsPlugin" type="ikfast_kinematics_plugin::NewIKFastKinematicsPlugin" base_class_type="kinematics::KinematicsBase">
+    <description>IKFast61 plugin for closed-form kinematics</description>
+  </class>
+</library>

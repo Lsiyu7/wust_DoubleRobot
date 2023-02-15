@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="wust_robot_left_gripper" pkg="wust_robot_driver" type="wust_robot_left_gripper.py" respawn="false" output="screen" />
+  <node name="wust_robot_right_gripper" pkg="wust_robot_driver" type="wust_robot_right_gripper.py" respawn="false" output="screen" />
+
+</launch>
