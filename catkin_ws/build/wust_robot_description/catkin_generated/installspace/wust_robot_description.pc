@@ -1,8 +1,0 @@
-prefix=/home/yumenghui/catkin_ws/install
-
-Name: wust_robot_description
-Description: Description of wust_robot_description
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

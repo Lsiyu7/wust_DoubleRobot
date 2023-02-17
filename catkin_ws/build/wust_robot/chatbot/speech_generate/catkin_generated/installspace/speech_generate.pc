@@ -1,8 +1,0 @@
-prefix=/home/yumenghui/catkin_ws/install
-
-Name: speech_generate
-Description: Description of speech_generate
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

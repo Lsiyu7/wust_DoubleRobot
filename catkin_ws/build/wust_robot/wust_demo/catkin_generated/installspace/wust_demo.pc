@@ -1,8 +1,0 @@
-prefix=/home/yumenghui/catkin_ws/install
-
-Name: wust_demo
-Description: Description of wust_demo
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

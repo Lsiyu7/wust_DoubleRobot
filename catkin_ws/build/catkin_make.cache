@@ -1,2 +1,0 @@
-wust_robot/mr_msgs:wust_robot/wust_demo:wust_robot/wust_robot_description:wust_robot/wust_robot_driver:wust_robot/wust_robot_gazebo:wust_robot/wust_robot_moveit_config:wust_robot/wust_teleop:wust_robot_ikfast_left_arm_plugin:wust_robot_ikfast_right_arm_plugin
--DCATKIN_DEVEL_PREFIX=/home/yumenghui/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/yumenghui/catkin_ws/install -G Unix Makefiles
